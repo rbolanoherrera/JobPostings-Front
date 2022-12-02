@@ -1,0 +1,32 @@
+﻿@model WebUI.Models.Publisher
+
+@{
+    ViewBag.Title = "Add new Publisher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="card-header">@ViewBag.Title</h4>
+<br />
+@using (Html.BeginForm("Add", "Publisher", FormMethod.Post, null))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <input id="hddMessageAction" type="hidden" value="@ViewBag.messageAction" />
+
+    <div class="row">
+        <div class="form-group col-3">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control col", @maxlength = "50" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @Html.ValidationMessage("summaryErrors", new { @class = "text-danger" })
+    <div class="row form-group">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <a class="btn btn-danger" href="@Url.Action("Index", "Publisher")">Back</a>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Job Postings</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Companies</h2>
+        <p>
+            List, Add and Delete
+        </p>
+        <p><a class="btn btn-primary" href="@Url.Action("Index", "Company")">Go to Companies</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Jobs</h2>
+        <p>List, Add and Update</p>
+        <p><a class="btn btn-warning" href="@Url.Action("Index", "Job")">Go to Jobs</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Publishers</h2>
+        <p>List, Add and Update</p>
+        <p><a class="btn btn-info" href="@Url.Action("Index", "Publisher")">Go to Publisher</a></p>
+    </div>
+</div>

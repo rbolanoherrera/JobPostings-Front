@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index Publisher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="card-header">@ViewBag.Title</h4>
+<br />
+<span class="text-right formHeaderControl mb-5">
+    <a class="btn btn-primary mb-2" href="@Url.Action("Add", "Publisher")" title="Click to create new Publisher">New Publisher</a>
+</span>
+@using (Html.BeginForm())
+{
+    <br>
+    <table class="table table-sm table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Edit</th>
+                @*<th class="text-center">Delete</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (ViewBag.ListPublishers != null)
+                {
+                    foreach (WebUI.Models.Publisher item in ViewBag.ListPublishers)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td class="text-center">
+                                <a title="Edit company info"
+                                   href="@Url.Action("Edit", "Publisher", new { id = Convert.ToInt32(item.Id) })">
+                                    Edit
+                                </a>
+                            </td>
+                            @*<td class="text-center">
+                                <a title="Delete publisher"
+                                   href="@Url.Action("Delete", "Publisher", new { id = Convert.ToInt32(item.Id) })">
+                                    Delete
+                                </a>
+                            </td>*@
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+}
