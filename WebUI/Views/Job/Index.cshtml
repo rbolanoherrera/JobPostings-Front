@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index Jobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="card-header">@ViewBag.Title</h4>
+<br />
+<span class="text-right formHeaderControl mb-5">
+    <a class="btn btn-primary mb-2" href="@Url.Action("Add", "Job")" title="Click to create new Job">New Job</a>
+</span>
+@using (Html.BeginForm())
+{
+    <br>
+    <table class="table table-sm table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th class="text-center">Title</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Edit</th>
+                @*<th class="text-center">Delete</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (ViewBag.ListJobs != null)
+                {
+                    foreach (WebUI.Models.Job item in ViewBag.ListJobs)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@(item.Category != null ? item.Category.Name : "")</td>
+                            <td class="text-center">
+                                <a title="Edit Job info"
+                                   href="@Url.Action("Edit", "Job", new { id = Convert.ToInt32(item.Id) })">
+                                    Edit
+                                </a>
+                            </td>
+                            @*<td class="text-center">
+                                    <a title="Delete publisher"
+                                       href="@Url.Action("Delete", "Publisher", new { id = Convert.ToInt32(item.Id) })">
+                                        Delete
+                                    </a>
+                                </td>*@
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+}

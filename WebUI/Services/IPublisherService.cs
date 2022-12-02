@@ -1,9 +1,11 @@
-﻿using WebUI.Models;
+﻿using System.Collections.Generic;
+using WebUI.Models;
 
 namespace WebUI.Services
 {
-    internal interface IPublisherService
+    public interface IPublisherService
     {
+        List<Publisher> GetAll();
         Publisher GetById(long id);
     }
 }
